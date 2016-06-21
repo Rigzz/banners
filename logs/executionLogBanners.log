@@ -5,3 +5,5 @@
 2016-06-21 21:45:46,519 Successful method results - getBannersByWeight! - {ABSOLUTE}  INFO main BannerService:getBannersByWeight:51
 2016-06-21 21:45:51,578 Successful method results - getBannersByWeight! - {ABSOLUTE}  INFO main BannerService:getBannersByWeight:51
 2016-06-21 21:58:57,453 Successful method results - getBanners! - {ABSOLUTE}  INFO main BannerService:getBanners:33
+2016-06-22 00:18:16,177 Successful method results - getBannersByWeight! - {ABSOLUTE}  INFO main BannerService:getBannersByWeight:51
+2016-06-22 00:18:16,182 Successful method results - getBanners! - {ABSOLUTE}  INFO main BannerService:getBanners:33
