@@ -1,0 +1,4 @@
+2016-06-21 17:34:01,132 When the error of the method - getBanners:
+java.lang.NullPointerException - {ABSOLUTE} ERROR http-apr-8088-exec-17 BannerService:getBanners:35
+2016-06-21 18:48:11,334 When the error of the method - getBanners:
+java.lang.NullPointerException - {ABSOLUTE} ERROR http-apr-8088-exec-17 BannerService:getBanners:35

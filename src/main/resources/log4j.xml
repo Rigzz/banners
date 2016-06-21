@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+
+    <appender name="console" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%n%d %m - {ABSOLUTE} %5p %t %c{1}:%M:%L"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="INFO"/>
+            <param name="levelMax" value="FATAL"/>
+        </filter>
+    </appender>
+
+    <!-- errorsLogBanners -->
+    <appender name="errorsLogBanners" class="org.apache.log4j.FileAppender">
+        <param name="Encoding" value="UTF-8"/>
+        <param name="file" value="logs/errorsLogBanners.log"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%n%d %m - {ABSOLUTE} %5p %t %c{1}:%M:%L"/>
+        </layout>
+        <filter class="org.apache.log4j.varia.LevelRangeFilter">
+            <param name="levelMin" value="error"/>
+            <param name="levelMax" value="fatal"/>
+        </filter>
+    </appender>
+    <!-- executionLogBanners -->
+    <appender name="executionLogBanners" class="org.apache.log4j.RollingFileAppender">
+        <param name="Encoding" value="UTF-8"/>
+        <param name="file" value="logs/executionLogBanners.log"/>
+        <param name="Append" value="true"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%n%d %m - {ABSOLUTE} %5p %t %c{1}:%M:%L"/>
+        </layout>
+    </appender>
+
+    <logger name="mvc.*">
+        <appender-ref ref="errorsLogBanners"/>
+    </logger>
+    <logger name="mvc.service.BannerService">
+        <appender-ref ref="executionLogBanners"/>
+    </logger>
+
+    <!-- Root logger -->
+    <root>
+        <priority value="info"/>
+        <appender-ref ref="console"/>
+    </root>
+
+</log4j:configuration>
