@@ -1,5 +1,5 @@
 # Banners
-Test Web-application - banners. 
+Test Web Application - banners. 
 
 # Web Service
 Representational state transfer (REST)
