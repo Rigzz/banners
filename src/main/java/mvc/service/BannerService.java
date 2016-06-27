@@ -9,9 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -22,6 +20,7 @@ public class BannerService {
 
     /**
      * Getting count banners (random result)
+     *
      * @param count
      * @return listBanners
      */
@@ -39,6 +38,7 @@ public class BannerService {
 
     /**
      * Getting count banners (weight result)
+     *
      * @param count
      * @return listBanners
      */
@@ -46,8 +46,17 @@ public class BannerService {
         List<Banner> listBanners = new ArrayList<>();
         try {
             List<Banner> banners = parseListBanners();
-            int sumWeight = sumWeight(banners);
-            banners.stream().filter(b -> (double) b.getWeight() / (double) sumWeight > 0.1 * new Random().nextDouble()).filter(b -> listBanners.size() != count).forEach(listBanners::add);
+            double sumWeight = (double) sumWeight(banners);
+            Collections.shuffle(banners);
+            while (listBanners.size() != count) {
+                double random = 0.09 * new Random().nextDouble();
+                for (Banner b : banners)
+                    if ((double) b.getWeight() / sumWeight > random)
+                        if (!listBanners.contains(b)) {
+                            listBanners.add(b);
+                            break;
+                        }
+            }
             LOG.info("Successful method results - getBannersByWeight!");
         } catch (Exception e) {
             LOG.error("When the error of the method - getBannersByWeight: " + "\n" + e);
@@ -70,5 +79,4 @@ public class BannerService {
         BufferedReader br = Files.newBufferedReader(Paths.get(String.valueOf(new File(getClass().getClassLoader().getResource(BANNERS).getFile()))));
         return br.lines().collect(Collectors.toList());
     }
-
 }
