@@ -31,7 +31,7 @@ public class BannerService {
             listBanners = new Random().ints(0, banners.size()).distinct().limit(count).mapToObj(banners::get).collect(Collectors.toList());
             LOG.info("Successful method results - getBanners!");
         } catch (Exception e) {
-            LOG.error("When the error of the method - getBanners: " + "\n" + e);
+            LOG.error("When the error of the method - getBanners: " +  "\n" + e);
         }
         return listBanners;
     }

@@ -74,7 +74,7 @@ public class BannersServiceTest {
 
     @Test
     public void testCheckRandomByWeight() throws Exception {
-        int countResultCheck = 10, firstObtainBanner = 1, totalWeight = 0;
+        int countResultCheck = 10, firstObtainBanner =  1, totalWeight = 0;
         Map<String, Integer> resultCheckBanners = new HashMap<>();
         List<List<Banner>> allIterationWeight = new ArrayList<>();
 
